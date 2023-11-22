@@ -1,17 +1,18 @@
  pipeline {
-    agent any
+    agent {
+        label 'any' // Replace 'my-agent-label' with your specific agent label or use 'any'
+    }
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'django:latest'
-                    args '-u root' // Additional arguments, if needed
-                }
-            }
             steps {
-                // Steps to be executed inside the Docker container
-                sh 'python3 manage.py'
+                script {
+                    // Run inside the Docker container
+                    docker.image('django:latest').inside {
+                        sh 'python3 manage.py'
+                        // Add other build steps here
+                    }
+                }
             }
         }
     }
