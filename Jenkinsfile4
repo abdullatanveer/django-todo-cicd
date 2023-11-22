@@ -3,10 +3,10 @@
 
   stages{
     stage('Build'){
-    agent {
-     docker { image 'django:latest' }
-    }
-          steps{
+     agent {
+       docker { image 'django:latest' }
+     }
+     steps{
             sh 'python3 manage.py'
           }
     }
