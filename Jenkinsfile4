@@ -7,7 +7,7 @@
             docker{ image "django:latest" }
            }
             steps {
-                 sh 'python
+                 sh 'python3 manage.py'
                     }
                 }
             }
