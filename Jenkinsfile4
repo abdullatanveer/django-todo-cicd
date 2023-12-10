@@ -3,15 +3,13 @@
 
     stages {
         stage('Build') {
+           agent{
+            docker{ image "django:latest" }
+           }
             steps {
-                script {
-                    // Run inside the Docker container
-                    docker.image('django:latest').inside {
-                        sh 'python3 manage.py'
-                        // Add other build steps here
+                 sh 'python
                     }
                 }
             }
         }
-    }
-}
+    
